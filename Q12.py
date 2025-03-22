@@ -1,12 +1,5 @@
- # 1 
-# 2 3
-# 3 4 5
-# 4 5 6 7
-# 5 6 7 8 9
-n = int(input("Enter the nuber of row "))
-count = 1
-for i in range(n):
-  for j in range(i+1):
-    print(count,end=" ")
-    count += 1  
-  print(" ")  
+# Adding two list in asinglr list
+li = [2,4,5,8,9,12,10]
+li1 = [21,41,15,18,91,112,110]
+l3 = li+li1
+print(l3)
