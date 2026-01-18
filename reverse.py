@@ -8,3 +8,9 @@ reverse_string=""
 for char in range(len(string)-1,-1,-1):
     reverse_string+=string[char]
 print("Reverse String",reverse_string )
+
+def reverse(string):
+    char=list(string)
+    for k in range((len(string)//2)+1):
+        char[k],char[len(char)-1] = char[len(char)-1], char[k]
+    return "".join(char)

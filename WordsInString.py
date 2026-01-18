@@ -50,10 +50,12 @@ print(findDuplicateChar(string))
 # All Substring
 def AllAubstring(string):
     result=[]
+    count=0
     for i in range(len(string)):
         for j in range(i+1, len(string)+1):
             result.append(string[i:j])
-    return result        
+            count +=1
+    return result ,count      
 string="abcdefasd"
 print(AllAubstring(string))  
 
@@ -70,4 +72,26 @@ k=3
 print(K_LenthSubString(string,k))
    
 
+def Max_length_word(string):
+    max_length=0
+    words=string.split(' ')
+    print(words)
+    for char in words:
+       length=len(char)
+       if max_length<length:
+           max_length=length
+    return max_length      
 
+string="India Is My Country"
+print(Max_length_word(string))
+
+
+def reverseSentance(sentance):
+    result=[]
+    words = sentance.split(" ")
+    for char in range(len(words)-1,-1,-1):
+        result.append(words[char])
+    return " ".join(result) 
+
+string="India Is My Country"
+print(reverseSentance(string))
