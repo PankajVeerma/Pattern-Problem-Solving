@@ -101,3 +101,38 @@ def Quick_Sort(nums,low,high):
 nums = [2, 4, 3, 3, 25, 67, 87, 6554, 3]
 Quick_Sort(nums, 0, len(nums) - 1)
 print(nums)
+
+
+# ===============Inversion Count-----------
+def count_inversions(arr):
+    inversion_count = 0
+
+    def quicksort(subarray):
+        nonlocal inversion_count
+
+        # Base case: no inversions possible
+        if len(subarray) <= 1:
+            return
+
+        pivot = subarray[0]
+        left = []   # Elements smaller than pivot
+        right = []  # Elements greater than or equal to pivot
+
+        # Partition step
+        for value in subarray[1:]:
+            if value < pivot:
+                left.append(value)
+
+                # Count inversions:
+                # 1 for pivot
+                # + number of elements already placed in right
+                inversion_count += len(right) + 1
+            else:
+                right.append(value)
+
+        # Recursively process both halves
+        quicksort(left)
+        quicksort(right)
+
+    quicksort(arr)
+    return inversion_count
