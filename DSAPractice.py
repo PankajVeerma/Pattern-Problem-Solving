@@ -104,35 +104,26 @@ print(nums)
 
 
 # ===============Inversion Count-----------
-def count_inversions(arr):
-    inversion_count = 0
-
-    def quicksort(subarray):
-        nonlocal inversion_count
-
-        # Base case: no inversions possible
-        if len(subarray) <= 1:
-            return
-
-        pivot = subarray[0]
-        left = []   # Elements smaller than pivot
-        right = []  # Elements greater than or equal to pivot
-
-        # Partition step
-        for value in subarray[1:]:
-            if value < pivot:
-                left.append(value)
-
-                # Count inversions:
-                # 1 for pivot
-                # + number of elements already placed in right
-                inversion_count += len(right) + 1
-            else:
-                right.append(value)
-
-        # Recursively process both halves
-        quicksort(left)
-        quicksort(right)
-
-    quicksort(arr)
-    return inversion_count
+class Solution:
+    def inversionCount(self, arr):
+        # Code Here
+        ret=0
+        def quicksort(arr=arr):
+            nonlocal ret
+            lth=len(arr)
+            if lth<=1:
+                return
+            piv=arr[0]
+            left=[]
+            right=[]
+            for ix in range(1,lth):
+                ve=arr[ix]
+                if ve<piv:
+                    left.append(ve)
+                    ret+=len(right)+1
+                else:
+                    right.append(ve)
+            quicksort(left)
+            quicksort(right)
+        quicksort()
+        return ret 
